@@ -1,12 +1,13 @@
 import type { User } from '@/models/user';
-import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth, provider } from './firestore.service';
+import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from 'firebase/auth';
 
 export async function login(): Promise<User> {
   try {
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential?.accessToken;
+    
     // The signed-in user info.
     const user = result.user;
 
@@ -29,6 +30,7 @@ export async function logout(): Promise<void> {
 }
 
 export function getUser(): Promise<User> {
+  
   return new Promise<User>((resolve, reject) => {
     const user = auth.currentUser;
 

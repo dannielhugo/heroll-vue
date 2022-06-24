@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
-import AlertMessage from '@/components/utility/AlertMessage.vue';
+import AlertMessage from '@/features/utility/AlertMessage.vue';
 </script>
 
 <template>

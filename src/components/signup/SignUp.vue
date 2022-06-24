@@ -20,9 +20,10 @@
         <h1>Heroll - Sign Up</h1>
         <el-button
           type="primary"
+          data-testid="signup"
+          size="large"
           :icon="UserFilled"
           :loading="loading"
-          size="large"
           @click="$emit('signup')"
         >
           Sign Up With Google
