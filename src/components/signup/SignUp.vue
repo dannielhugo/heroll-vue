@@ -18,7 +18,13 @@
     <div class="sign-in__card">
       <el-card class="sign-in__card__el">
         <h1>Heroll - Sign Up</h1>
-        <el-button type="primary" :icon="UserFilled" size="large">
+        <el-button
+          type="primary"
+          :icon="UserFilled"
+          :loading="loading"
+          size="large"
+          @click="$emit('signup')"
+        >
           Sign Up With Google
         </el-button>
       </el-card>
@@ -27,8 +33,11 @@
 </template>
 
 <script setup lang="ts">
-import url from '@/assets/signin-bg.jpg';
 import { UserFilled } from '@element-plus/icons-vue';
+
+import url from '@/assets/signin-bg.jpg';
+defineEmits(['signup']);
+defineProps(['loading']);
 </script>
 
 <style scoped lang="scss">
@@ -37,7 +46,7 @@ import { UserFilled } from '@element-plus/icons-vue';
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
 
   &__bg {
     position: relative;
@@ -69,7 +78,6 @@ import { UserFilled } from '@element-plus/icons-vue';
       width: 400px;
       height: 400px;
       text-align: center;
-      padding-top: 50px;
 
       h1 {
         margin-bottom: 50px;
