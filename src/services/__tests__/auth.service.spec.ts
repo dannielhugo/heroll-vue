@@ -22,9 +22,12 @@ import { getUser, login, logout, registerAuthStateChanged } from '../auth.servic
 
 vi.stubGlobal('console', {
   log: vi.fn(),
+  warn: vi.fn(),
 });
 
+vi.mock('/firestore.service', () => {});
 vi.mock('firebase/auth', () => mockFirebase);
+
 
 const signInResult = {
   user: {

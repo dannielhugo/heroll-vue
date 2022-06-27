@@ -11,6 +11,8 @@ vi.mock('vue-router', () => ({
   useRouter: () => mockRouter,
 }));
 
+vi.mock('@/services/auth.service', () => {});
+
 describe('SignUpView', () => {
   
   beforeEach(() => {
