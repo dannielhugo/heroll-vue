@@ -22,6 +22,9 @@ export const useUserStore = defineStore({
     },
     stopLoading() {
       this.loading = false;
-    }
+    },
+    updateUser(user: User) {
+      this.user = user;
+    },
   },
 });
