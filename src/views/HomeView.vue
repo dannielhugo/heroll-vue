@@ -19,7 +19,5 @@ registerAuthStateChanged(
 </script>
 
 <template>
-  <main>
-    <RouterView />
-  </main>
+  <RouterView />
 </template>

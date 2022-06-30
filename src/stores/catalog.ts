@@ -4,14 +4,14 @@ import { catalogService } from '@/services/catalog.service';
 import { defineStore } from 'pinia';
 
 export interface CatalogState {
-  catalog?: Catalog;
+  catalog: Catalog;
   loading: boolean;
 }
 
 export const useCatalogStore = defineStore({
   id: 'catalog',
   state: () => ({
-    catalog: undefined,
+    catalog: {},
     loading: false,
   }) as CatalogState,
   getters: {

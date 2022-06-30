@@ -3,15 +3,15 @@ import { login } from '@/services/auth.service';
 import { defineStore } from 'pinia';
 
 export interface UserState {
-  user?: User;
+  user: User;
   loading: boolean;
 }
 
 export const useUserStore = defineStore({
   id: 'user',
   state:() => ({
-    user: undefined,
     loading: false,
+    user: {},
   }) as UserState,
   actions: {
     async login() {
