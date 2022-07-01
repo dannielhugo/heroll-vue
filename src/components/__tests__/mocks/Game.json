@@ -1,0 +1,77 @@
+{
+  "slug": "soulcalibur-1998",
+  "name": "Soulcalibur (1998)",
+  "playtime": 0,
+  "platforms": [
+    {
+      "platform": {
+        "id": 14,
+        "name": "Xbox 360",
+        "slug": "xbox360"
+      }
+    },
+    {
+      "platform": {
+        "id": 106,
+        "name": "Dreamcast",
+        "slug": "dreamcast"
+      }
+    }
+  ],
+  "stores": null,
+  "released": "1998-07-30",
+  "tba": false,
+  "background_image": null,
+  "rating": 0,
+  "rating_top": 0,
+  "ratings": [],
+  "ratings_count": 0,
+  "reviews_text_count": 0,
+  "added": 1,
+  "added_by_status": {
+    "yet": 1
+  },
+  "metacritic": 98,
+  "suggestions_count": 0,
+  "updated": "2020-01-29T13:45:49",
+  "id": 407559,
+  "score": null,
+  "clip": null,
+  "tags": [],
+  "esrb_rating": {
+    "id": 3,
+    "name": "Teen",
+    "slug": "teen",
+    "name_en": "Teen",
+    "name_ru": "С 13 лет"
+  },
+  "user_game": null,
+  "reviews_count": 0,
+  "community_rating": 0,
+  "saturated_color": "0f0f0f",
+  "dominant_color": "0f0f0f",
+  "short_screenshots": [],
+  "parent_platforms": [
+    {
+      "platform": {
+        "id": 3,
+        "name": "Xbox",
+        "slug": "xbox"
+      }
+    },
+    {
+      "platform": {
+        "id": 11,
+        "name": "SEGA",
+        "slug": "sega"
+      }
+    }
+  ],
+  "genres": [
+    {
+      "id": 6,
+      "name": "Fighting",
+      "slug": "fighting"
+    }
+  ]
+}

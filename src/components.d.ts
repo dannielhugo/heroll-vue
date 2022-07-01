@@ -13,7 +13,7 @@ declare module '@vue/runtime-core' {
     ElImage: typeof import('element-plus/es')['ElImage']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElRow: typeof import('element-plus/es')['ElRow']
-    GameJournal: typeof import('./components/journal/journal/GameJournal.vue')['default']
+    GameJournal: typeof import('./components/journal/GameJournal.vue')['default']
     GridGameItem: typeof import('./components/journal/grid-view/game-item/GridGameItem.vue')['default']
     GridGameList: typeof import('./components/journal/grid-view/game-list/GridGameList.vue')['default']
     GridView: typeof import('./components/journal/grid-view/GridView.vue')['default']

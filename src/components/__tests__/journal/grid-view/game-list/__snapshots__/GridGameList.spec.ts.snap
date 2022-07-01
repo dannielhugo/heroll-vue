@@ -1,0 +1,25 @@
+// Vitest Snapshot v1
+
+exports[`GridGameList > should mount component 1`] = `
+"<div class=\\"game-list\\" data-v-ef199a12=\\"\\">
+  <div class=\\"game-list__cols\\" data-v-ef199a12=\\"\\">
+    <div class=\\"el-card is-hover-shadow game-card\\" data-v-a56eedd2=\\"\\" data-v-ef199a12=\\"\\">
+      <!--v-if-->
+      <div class=\\"el-card__body\\" style=\\"padding: 0px;\\">
+        <div class=\\"el-image\\" data-v-a56eedd2=\\"\\">
+          <!--v-if-->
+          <div class=\\"el-image__wrapper\\">
+            <div class=\\"el-image__placeholder\\"></div>
+          </div>
+          <!--v-if-->
+        </div>
+        <div style=\\"padding: 14px;\\" data-v-a56eedd2=\\"\\">
+          <div class=\\"game-card__title\\" data-v-a56eedd2=\\"\\">Soulcalibur (1998)</div>
+          <div class=\\"game-card__subtitle\\" data-v-a56eedd2=\\"\\">Fighting</div>
+          <div class=\\"game-card__subtitle\\" data-v-a56eedd2=\\"\\">Xbox 360, Dreamcast</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
