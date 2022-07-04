@@ -1,8 +1,10 @@
 import type { Serializable } from '@/models/serializable';
 import { addDoc, arrayRemove, arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
-import { db } from './firestore.service';
+import { firestoreService } from './firestore.service';
 
-class FirebaseService {
+const { db } = firestoreService();
+
+export class FirebaseService {
   async create<T extends Serializable>(data: T, collectionName: string): Promise<string>{
     try {
       const docRef = await addDoc(collection(db, collectionName), data);
@@ -78,5 +80,3 @@ class FirebaseService {
     });
   }
 }
-
-export const firebase = new FirebaseService();

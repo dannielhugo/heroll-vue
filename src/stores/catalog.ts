@@ -1,6 +1,6 @@
 import type { Catalog } from '@/models/catalog';
 import type { Game } from '@/models/game';
-import { catalogService } from '@/services/catalog.service';
+import { Factory } from '@/services/factory.service';
 import { defineStore } from 'pinia';
 
 export interface CatalogState {
@@ -22,7 +22,7 @@ export const useCatalogStore = defineStore({
   actions: {
     async load(userId: string) {
       this.loading = true;
-      const catalog = await catalogService.get(userId);
+      const catalog = await Factory.catalogService().get(userId);
       this.loading = false;
       this.catalog = catalog;
     },

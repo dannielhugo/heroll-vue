@@ -10,7 +10,7 @@ vi.mock('vue-router', () => ({
   useRouter: () => mockRouter,
 }));
 
-vi.mock('@/services/auth.service', () => { });
+vi.mock('@/services/factory.service');
 
 describe('Use SignUp', () => {
   beforeEach(() => {

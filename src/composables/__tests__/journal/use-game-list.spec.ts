@@ -1,8 +1,8 @@
 import useGameList from '@/composables/journal/use-game-list';
-import { useCatalogStore } from '@/stores/catalog';
-import { useUserStore } from '@/stores/user';
 import { createTestingPinia, type TestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
+
+vi.mock('@/services/factory.service');
 
 describe('Use Game List', () => {
   let store: TestingPinia;
