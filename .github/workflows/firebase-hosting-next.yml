@@ -5,7 +5,7 @@ name: Deploy to Firebase Hosting on merge (next)
 'on':
   push:
     branches:
-      - next
+      - ci/enviroment-build
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -16,6 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt_secret_next.sh
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -23,3 +27,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HEROLL_APP }}'
           channelId: next
           projectId: heroll-app
+          target: next

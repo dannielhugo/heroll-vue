@@ -3,7 +3,8 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
-  "hosting": {
+  "hosting": [{
+    "site": "heroll",
     "public": "dist",
     "ignore": [
       "firebase.json",
@@ -16,5 +17,20 @@
         "destination": "/index.html"
       }
     ]
-  }
+  }, 
+  {
+    "site": "heroll-next",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }]
 }

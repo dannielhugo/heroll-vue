@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "heroll-app"
+    "default": "heroll-app",
+    "next": "heroll-next"
   }
 }
