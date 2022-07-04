@@ -6,7 +6,7 @@ vi.mock('@/composables/signup/use-signup', () => ({
   default: () => ({
     onLogin: vi.fn(),
     loading: false,
-  })
+  }),
 }));
 
 describe('SignUpView', () => {
@@ -15,10 +15,8 @@ describe('SignUpView', () => {
 
     const wrapper = mount(SignUpView, {
       global: {
-        plugins: [
-          ElementPlus,
-        ],
-      }
+        plugins: [ElementPlus],
+      },
     });
 
     expect(wrapper.html()).toMatchSnapshot();

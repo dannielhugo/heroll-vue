@@ -10,9 +10,7 @@ export default defineConfig({
       '@': pathSrc,
     },
   },
-  plugins: [
-    Vue(),
-  ],
+  plugins: [Vue()],
   test: {
     globals: true,
     environment: 'jsdom',

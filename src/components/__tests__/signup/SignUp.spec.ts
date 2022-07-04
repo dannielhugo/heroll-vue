@@ -12,7 +12,7 @@ describe('SignUp', () => {
       },
       global: {
         plugins: [ElementPlus],
-      }
+      },
     });
 
     expect(wrapper.html()).toMatchSnapshot();
@@ -25,11 +25,11 @@ describe('SignUp', () => {
       },
       global: {
         plugins: [ElementPlus],
-      }
+      },
     });
 
     wrapper.find('[data-testid=signup]').trigger('click');
 
-    expect(wrapper.emitted()).toHaveProperty('signup')
+    expect(wrapper.emitted()).toHaveProperty('signup');
   });
 });

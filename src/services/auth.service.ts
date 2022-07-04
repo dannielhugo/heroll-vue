@@ -1,7 +1,11 @@
 import type { User } from '@/models/user';
-import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from 'firebase/auth';
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  onAuthStateChanged,
+} from 'firebase/auth';
 import { Factory } from './factory.service';
-
 
 export class AuthService {
   async login(): Promise<User> {
@@ -44,15 +48,17 @@ export class AuthService {
           name: user.displayName || '',
           email: user.email || '',
           id: user.uid,
-        })
+        });
       } else {
-        reject(new Error('user is not logged in'))
+        reject(new Error('user is not logged in'));
       }
     });
   }
 
-
-  registerAuthStateChanged(onLoaded: (user: User) => void, onNotLoaded: () => void): void {
+  registerAuthStateChanged(
+    onLoaded: (user: User) => void,
+    onNotLoaded: () => void,
+  ): void {
     const { auth } = Factory.firestoreService();
     onAuthStateChanged(auth, (user) => {
       if (user) {

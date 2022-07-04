@@ -20,7 +20,9 @@ export class GameService {
     return response.data;
   }
 
-  static async highestMetacriticsScore(size: number): Promise<RawgSearchResponse> {
+  static async highestMetacriticsScore(
+    size: number,
+  ): Promise<RawgSearchResponse> {
     const response = await RawgService.get(GAMES_PATH, {
       params: {
         page_size: size,
@@ -32,7 +34,7 @@ export class GameService {
     return response.data;
   }
 
-  static async detailGame(gameId: number | string): Promise<Game>{
+  static async detailGame(gameId: number | string): Promise<Game> {
     const URL = `${GAMES_PATH}/${gameId}`;
     const response = await RawgService.get(URL);
 

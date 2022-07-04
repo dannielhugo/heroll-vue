@@ -10,18 +10,18 @@ describe('AlertMessage', () => {
     const wrapper = mount(AlertMessage, {
       global: {
         plugins: [
-          ElementPlus, 
+          ElementPlus,
           createTestingPinia({
             initialState: {
               message: {
                 message: 'An error',
                 type: 'error',
                 show: true,
-              }, 
+              },
             },
           }),
         ],
-      }
+      },
     });
 
     expect(wrapper.html()).toMatchSnapshot();

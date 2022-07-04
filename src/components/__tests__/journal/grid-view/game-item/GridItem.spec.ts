@@ -13,7 +13,7 @@ describe('GridGameItem', () => {
       },
       global: {
         plugins: [ElementPlus],
-      }
+      },
     });
 
     expect(wrapper.html()).toMatchSnapshot();

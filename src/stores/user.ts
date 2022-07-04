@@ -9,10 +9,11 @@ export interface UserState {
 
 export const useUserStore = defineStore({
   id: 'user',
-  state:() => ({
-    loading: false,
-    user: {},
-  }) as UserState,
+  state: () =>
+    ({
+      loading: false,
+      user: {},
+    } as UserState),
   actions: {
     async login() {
       this.loading = true;

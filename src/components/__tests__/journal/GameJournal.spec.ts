@@ -13,7 +13,7 @@ describe('GameJournal', () => {
       },
       global: {
         plugins: [ElementPlus],
-      }
+      },
     });
 
     expect(wrapper.html()).toMatchSnapshot();

@@ -11,4 +11,4 @@ export const Config = {
     rawg_url: import.meta.env.VITE_RAWG_API_URL,
     key: import.meta.env.VITE_RAWG_API_KEY,
   },
-}
+};

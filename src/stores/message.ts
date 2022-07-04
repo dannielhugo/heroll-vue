@@ -2,17 +2,18 @@ import { defineStore } from 'pinia';
 
 export interface MessageState {
   message: string;
-  type: 'warning' | 'success' | 'error',
+  type: 'warning' | 'success' | 'error';
   show: boolean;
 }
 
 export const useMessageStore = defineStore({
   id: 'message',
-  state: () => ({
-    message: '',
-    type: 'error',
-    show: false,
-  }) as MessageState,
+  state: () =>
+    ({
+      message: '',
+      type: 'error',
+      show: false,
+    } as MessageState),
   actions: {
     error(message: string) {
       this.message = message;

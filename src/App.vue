@@ -8,7 +8,7 @@ import AlertMessage from '@/features/utility/AlertMessage.vue';
     <el-main>
       <RouterView />
     </el-main>
-    <AlertMessage class="app-container__message"/>
+    <AlertMessage class="app-container__message" />
   </el-container>
 </template>
 

@@ -12,7 +12,7 @@ describe('GridView', () => {
       },
       global: {
         plugins: [ElementPlus],
-      }
+      },
     });
 
     expect(wrapper.html()).toMatchSnapshot();

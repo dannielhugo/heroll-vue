@@ -10,10 +10,11 @@ export interface CatalogState {
 
 export const useCatalogStore = defineStore({
   id: 'catalog',
-  state: () => ({
-    catalog: {},
-    loading: false,
-  }) as CatalogState,
+  state: () =>
+    ({
+      catalog: {},
+      loading: false,
+    } as CatalogState),
   getters: {
     games(): Game[] {
       return this.catalog?.games || [];

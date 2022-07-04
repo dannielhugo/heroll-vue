@@ -18,10 +18,10 @@ export class CatalogService {
   async get(userId: string): Promise<Catalog> {
     const firebase = Factory.firebaseService();
 
-    return await firebase.getById(COLLECTION, userId) as Catalog;
+    return (await firebase.getById(COLLECTION, userId)) as Catalog;
   }
 
-  async addGameToCatalog(catalog: Catalog, game: Game ) {
+  async addGameToCatalog(catalog: Catalog, game: Game) {
     const firebase = Factory.firebaseService();
 
     return await firebase.addDocToArray(COLLECTION, catalog.id, game, 'games');
@@ -30,12 +30,22 @@ export class CatalogService {
   async addGamesToCatalog(catalog: Catalog, games: Game[]) {
     const firebase = Factory.firebaseService();
 
-    return await firebase.addDocsToArray(COLLECTION, catalog.id, games, 'games');
+    return await firebase.addDocsToArray(
+      COLLECTION,
+      catalog.id,
+      games,
+      'games',
+    );
   }
 
   async removeGameFromCatalog(catalog: Catalog, game: Game) {
     const firebase = Factory.firebaseService();
 
-    return await firebase.removeDocFromArray(COLLECTION, catalog.id, game, 'games');
+    return await firebase.removeDocFromArray(
+      COLLECTION,
+      catalog.id,
+      game,
+      'games',
+    );
   }
 }

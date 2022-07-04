@@ -3,7 +3,7 @@ import ElementPlus from 'element-plus';
 import JournalView from '@/features/journal/JournalView.vue';
 
 vi.mock('@/composables/journal/use-game-list', () => ({
-  default: vi.fn().mockReturnValue({ loading: true, games: [] })
+  default: vi.fn().mockReturnValue({ loading: true, games: [] }),
 }));
 
 describe('JournalView', () => {
@@ -12,10 +12,8 @@ describe('JournalView', () => {
 
     const wrapper = mount(JournalView, {
       global: {
-        plugins: [
-          ElementPlus,
-        ],
-      }
+        plugins: [ElementPlus],
+      },
     });
 
     expect(wrapper.html()).toMatchSnapshot();

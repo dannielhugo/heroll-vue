@@ -9,11 +9,11 @@ describe('Use Game List', () => {
   beforeEach(() => {
     store = createTestingPinia({
       initialState: {
-        user: {user: {id: '2'}},
+        user: { user: { id: '2' } },
         catalog: {
           catalog: {},
           loading: false,
-        }
+        },
       },
     });
     setActivePinia(store);
@@ -21,7 +21,7 @@ describe('Use Game List', () => {
 
   test('should export properties', async () => {
     const props = useGameList();
-    
+
     expect(props).toHaveProperty('loading');
     expect(props).toHaveProperty('games');
     expect(props).toHaveProperty('games');

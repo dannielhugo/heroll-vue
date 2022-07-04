@@ -29,12 +29,12 @@ export interface Game {
   short_screenshots: ShortScreenshot[];
   parent_platforms: Platform[];
   genres: WithSlug[];
-  user_rating?: UserRating,
-  description?: string,
-  description_raw?: string,
-  publishers?: Developer[],
-  developers?: Developer[],
-  detailed?: boolean,
+  user_rating?: UserRating;
+  description?: string;
+  description_raw?: string;
+  publishers?: Developer[];
+  developers?: Developer[];
+  detailed?: boolean;
 }
 
 export interface AddedByStatus {

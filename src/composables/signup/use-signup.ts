@@ -26,4 +26,4 @@ export default function useSignUp() {
     onLogin,
     loading,
   };
-};
+}

@@ -14,5 +14,5 @@ export function firestoreService() {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
-  return {db, auth, provider};
+  return { db, auth, provider };
 }

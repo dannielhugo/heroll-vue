@@ -3,7 +3,7 @@ import { createTestingPinia } from '@pinia/testing';
 import { setActivePinia } from 'pinia';
 
 const mockRouter = {
-  push: vi.fn()
+  push: vi.fn(),
 };
 
 vi.mock('vue-router', () => ({

@@ -1,11 +1,23 @@
 import type { Serializable } from '@/models/serializable';
-import { addDoc, arrayRemove, arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import {
+  addDoc,
+  arrayRemove,
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore';
 import { firestoreService } from './firestore.service';
 
 const { db } = firestoreService();
 
 export class FirebaseService {
-  async create<T extends Serializable>(data: T, collectionName: string): Promise<string>{
+  async create<T extends Serializable>(
+    data: T,
+    collectionName: string,
+  ): Promise<string> {
     try {
       const docRef = await addDoc(collection(db, collectionName), data);
       console.log('Document written with ID: ', docRef.id);
@@ -16,16 +28,22 @@ export class FirebaseService {
     }
   }
 
-  async add<T extends Serializable>(data: T, collectionName: string, id: string): Promise<void> {
+  async add<T extends Serializable>(
+    data: T,
+    collectionName: string,
+    id: string,
+  ): Promise<void> {
     try {
-      await setDoc(doc(db, collectionName, id), data)
+      await setDoc(doc(db, collectionName, id), data);
     } catch (e) {
       console.error('Error adding document: ', e);
       throw e;
     }
   }
 
-  async getAll<T extends Serializable>(collectionName: string): Promise<T | null> {
+  async getAll<T extends Serializable>(
+    collectionName: string,
+  ): Promise<T | null> {
     const docRef = doc(db, collectionName);
     const docSnap = await getDoc(docRef);
 
@@ -39,7 +57,10 @@ export class FirebaseService {
     }
   }
 
-  async getById<T extends Serializable>(collectionName: string, id: string): Promise<T | null> {
+  async getById<T extends Serializable>(
+    collectionName: string,
+    id: string,
+  ): Promise<T | null> {
     const docRef = doc(db, collectionName, id);
     const docSnap = await getDoc(docRef);
 
@@ -53,30 +74,48 @@ export class FirebaseService {
     }
   }
 
-  async update<T extends Serializable>(data: T, collectionName: string): Promise<void> {
+  async update<T extends Serializable>(
+    data: T,
+    collectionName: string,
+  ): Promise<void> {
     const document = doc(db, collectionName, data.id);
 
     await updateDoc(document, data);
   }
 
-  async addDocToArray<T>(collectionName: string, elementId: string, arrayElement: T, field: string): Promise<void> {
+  async addDocToArray<T>(
+    collectionName: string,
+    elementId: string,
+    arrayElement: T,
+    field: string,
+  ): Promise<void> {
     const document = doc(db, collectionName, elementId);
     await updateDoc(document, {
-      [field]: arrayUnion(arrayElement)
+      [field]: arrayUnion(arrayElement),
     });
   }
 
-  async addDocsToArray<T>(collectionName: string, elementId: string, arrayElements: T[], field: string): Promise<void> {
+  async addDocsToArray<T>(
+    collectionName: string,
+    elementId: string,
+    arrayElements: T[],
+    field: string,
+  ): Promise<void> {
     const document = doc(db, collectionName, elementId);
     await updateDoc(document, {
-      [field]: arrayUnion(...arrayElements)
+      [field]: arrayUnion(...arrayElements),
     });
   }
 
-  async removeDocFromArray<T>(collectionName: string, elementId: string, arrayElement: T, field: string): Promise<void> {
+  async removeDocFromArray<T>(
+    collectionName: string,
+    elementId: string,
+    arrayElement: T,
+    field: string,
+  ): Promise<void> {
     const document = doc(db, collectionName, elementId);
     await updateDoc(document, {
-      [field]: arrayRemove(arrayElement)
+      [field]: arrayRemove(arrayElement),
     });
   }
 }
