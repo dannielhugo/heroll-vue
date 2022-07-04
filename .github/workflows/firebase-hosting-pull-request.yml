@@ -19,7 +19,7 @@ jobs:
   build_and_preview:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
-     steps:
+    steps:
       - uses: actions/checkout@v2
       - name: Decrypt large secret
         run: ./.github/scripts/decrypt_secret_next.sh
