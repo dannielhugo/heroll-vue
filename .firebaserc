@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "heroll-app"
-  }
+    "default": "heroll-app",
+    "staging": "heroll-stg"
+  },
+  "targets": {}
 }

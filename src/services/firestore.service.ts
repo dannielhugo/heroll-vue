@@ -5,6 +5,8 @@ import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = Config.firebase;
 
+console.log(firebaseConfig);
+
 // init firebase
 initializeApp(firebaseConfig);
 

@@ -12,14 +12,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run test:unit
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci && npm run lint:build
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && npm run build
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt_secret_next.sh
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      - run: npm ci && npm run build:stg
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HEROLL_APP }}'
-          channelId: next
-          projectId: heroll-app
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HEROLL_STG }}'
+          channelId: live
+          projectId: heroll-stg
