@@ -1,27 +1,31 @@
 import type { User } from '@/models/user';
-import { login } from '@/services/auth.service';
+import { Factory } from '@/services/factory.service';
 import { defineStore } from 'pinia';
 
 export interface UserState {
-  user?: User;
+  user: User;
   loading: boolean;
 }
 
 export const useUserStore = defineStore({
   id: 'user',
-  state:() => ({
-    user: undefined,
-    loading: false,
-  }) as UserState,
+  state: () =>
+    ({
+      loading: false,
+      user: {},
+    } as UserState),
   actions: {
     async login() {
       this.loading = true;
-      const user = await login();
+      const user = await Factory.authService().login();
       this.user = user;
       this.loading = false;
     },
     stopLoading() {
       this.loading = false;
-    }
+    },
+    updateUser(user: User) {
+      this.user = user;
+    },
   },
 });

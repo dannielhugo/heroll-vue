@@ -1,0 +1,16 @@
+// Vitest Snapshot v1
+
+exports[`JournalView > should mount component 1`] = `
+"<div class=\\"container el-loading-parent--relative\\" data-v-06c35f8d=\\"\\" loading-number=\\"1\\">
+  <div class=\\"game-list\\" data-v-ef199a12=\\"\\" data-v-06c35f8d=\\"\\"></div>
+  <transition-stub>
+    <div class=\\"el-loading-mask\\" style=\\"display: none;\\">
+      <div class=\\"el-loading-spinner\\"><svg class=\\"circular\\" viewBox=\\"25 25 50 50\\">
+          <circle class=\\"path\\" cx=\\"50\\" cy=\\"50\\" r=\\"20\\" fill=\\"none\\"></circle>
+        </svg>
+        <!---->
+      </div>
+    </div>
+  </transition-stub>
+</div>"
+`;

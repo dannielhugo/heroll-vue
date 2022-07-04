@@ -6,5 +6,9 @@ export const Config = {
     storageBucket: import.meta.env.VITE_STORAGEBUCKET,
     messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
     appId: import.meta.env.VITE_APPID,
-  }
-}
+  },
+  rawg: {
+    rawg_url: import.meta.env.VITE_RAWG_API_URL,
+    key: import.meta.env.VITE_RAWG_API_KEY,
+  },
+};
