@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading" class="container">
+  <div v-loading="loading" class="journal-container">
     <GridView :games="games" />
   </div>
 </template>
@@ -11,8 +11,8 @@ defineProps<{ games: Game[]; loading: boolean }>();
 </script>
 
 <style scoped lang="scss">
-.container {
-  height: 100%;
+.journal-container {
+  height: 90vh;
   width: 100%;
   margin: auto;
 
