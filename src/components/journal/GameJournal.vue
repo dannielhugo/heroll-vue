@@ -14,12 +14,6 @@ defineProps<{ games: Game[]; loading: boolean }>();
 .journal-container {
   height: 90vh;
   width: 100%;
-  margin: auto;
-
-  @media (min-width: 1536px) {
-    max-width: 1536px;
-    padding-left: 24px;
-    padding-right: 24px;
-  }
+  overflow: hidden;
 }
 </style>

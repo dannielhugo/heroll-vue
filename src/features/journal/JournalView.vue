@@ -1,8 +1,9 @@
 <template>
   <GameJournal :loading="loading" :games="gamesInPage" />
   <HPagination
+    class="journal-view__pagination"
     :total="total"
-    :loading="false"
+    :loading="loading"
     :page-size="perPage"
     :current-page="page"
     @page-changed="onPageChanged"
@@ -21,4 +22,11 @@ const onPageChanged = (newPage: number) => {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.journal-view {
+  &__pagination {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
+</style>

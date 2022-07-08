@@ -27,7 +27,7 @@ const genres = props.game.genres?.reduce((curr, genre) => {
 
 <style scoped lang="scss">
 .game-card {
-  width: 345px;
+  width: 100%;
   cursor: pointer;
 
   &__image {
