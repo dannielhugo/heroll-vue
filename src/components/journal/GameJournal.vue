@@ -12,8 +12,6 @@ defineProps<{ games: Game[]; loading: boolean }>();
 
 <style scoped lang="scss">
 .journal-container {
-  height: 90vh;
   width: 100%;
-  overflow: hidden;
 }
 </style>

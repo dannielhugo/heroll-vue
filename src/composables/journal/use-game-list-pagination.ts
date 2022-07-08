@@ -4,7 +4,7 @@ import type { Ref } from 'vue';
 export default function useGameListPagination(games: Ref<Game[]>) {
   const page = ref(1);
   const gamesInPage = ref<Game[]>([]);
-  const perPage = ref(10);
+  const perPage = ref(12);
   const total = ref(games.value.length);
   const pages = ref(Math.ceil(games.value.length/perPage.value));
   const list = ref(games.value);

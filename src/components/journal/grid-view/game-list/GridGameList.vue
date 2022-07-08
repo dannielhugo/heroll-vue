@@ -16,11 +16,10 @@ defineProps<{ games: Game[] }>();
 .game-list {
   display: grid;
   gap: 1rem;
-  // grid-template-columns: repeat(auto-fit, 345px);
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
 
-  @media (min-width: 1536px) {
-    max-width: 1536px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 
   &__cols {
