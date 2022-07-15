@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`GridView > should mount component 1`] = `"<div class=\\"game-list\\" data-v-ef199a12=\\"\\"></div>"`;

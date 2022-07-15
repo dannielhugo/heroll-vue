@@ -4,28 +4,37 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
+    "build:stg": "run-p type-check build-only:stg",
     "preview": "vite preview --port 4173",
     "test:unit": "vitest --environment jsdom",
     "build-only": "vite build",
+    "build-only:stg": "vite build --mode next",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "lint:build": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.6",
+    "axios": "^0.27.2",
     "element-plus": "^2.2.6",
+    "firebase": "^9.8.4",
+    "luxon": "^2.4.0",
     "pinia": "^2.0.14",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "@pinia/testing": "^0.0.12",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/jsdom": "^16.2.14",
+    "@types/luxon": "^2.3.2",
     "@types/node": "^16.11.41",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/test-utils": "^2.0.0",
     "@vue/tsconfig": "^0.1.3",
+    "c8": "^7.11.3",
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^9.0.0",
     "jsdom": "^20.0.0",
