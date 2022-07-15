@@ -6,15 +6,16 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElAlert: typeof import('element-plus/es')['ElAlert']
-    ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElImage: typeof import('element-plus/es')['ElImage']
     ElMain: typeof import('element-plus/es')['ElMain']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
     GameJournal: typeof import('./components/journal/GameJournal.vue')['default']
     GridGameItem: typeof import('./components/journal/grid-view/game-item/GridGameItem.vue')['default']
     GridGameList: typeof import('./components/journal/grid-view/game-list/GridGameList.vue')['default']
     GridView: typeof import('./components/journal/grid-view/GridView.vue')['default']
+    HPagination: typeof import('./components/utility/HPagination.vue')['default']
     Loading: typeof import('element-plus/es')['ElLoadingDirective']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

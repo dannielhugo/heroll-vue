@@ -9,7 +9,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      redirect: (_) => {
+      redirect: () => {
         // the function receives the target route as the argument
         // a relative location doesn't start with `/`
         // or { path: 'profile'}
@@ -20,6 +20,7 @@ const router = createRouter({
           path: '/journal',
           name: 'journal',
           component: JournalView,
+          meta: { title: 'Journal' },
         },
       ],
     },

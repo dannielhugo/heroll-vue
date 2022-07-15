@@ -1,10 +1,12 @@
 import { mount } from '@vue/test-utils';
 import ElementPlus from 'element-plus';
-import JournalView from '@/features/journal/JournalView.vue';
+import { ref } from 'vue';
 
 vi.mock('@/composables/journal/use-game-list', () => ({
-  default: vi.fn().mockReturnValue({ loading: true, games: [] }),
+  default: vi.fn().mockReturnValue({ loading: true, games: ref([]) }),
 }));
+
+import JournalView from '@/features/journal/JournalView.vue';
 
 describe('JournalView', () => {
   test('should mount component', async () => {

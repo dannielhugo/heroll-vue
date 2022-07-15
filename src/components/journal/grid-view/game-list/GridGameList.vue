@@ -14,16 +14,17 @@ defineProps<{ games: Game[] }>();
 
 <style lang="scss" scoped>
 .game-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit, 345px);
-  justify-content: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
 
   &__cols {
     margin-bottom: 20px;
-    width: 345px;
     padding: 0;
   }
 }
