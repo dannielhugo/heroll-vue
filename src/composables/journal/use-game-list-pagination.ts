@@ -1,5 +1,6 @@
 import type { Game } from '@/models/game';
 import type { Ref } from 'vue';
+import { ref, watch } from 'vue';
 
 export default function useGameListPagination(games: Ref<Game[]>) {
   const page = ref(1);

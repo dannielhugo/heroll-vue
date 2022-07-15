@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 import GameJournal from '@/components/journal/GameJournal.vue';
+import HPagination from '@/components/utility/HPagination.vue';
 import useGameList from '@/composables/journal/use-game-list';
 import useGameListPagination from '@/composables/journal/use-game-list-pagination';
 const { loading, games } = useGameList();

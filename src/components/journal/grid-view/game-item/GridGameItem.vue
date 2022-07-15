@@ -1,6 +1,10 @@
 <template>
   <el-card class="game-card" :body-style="{ padding: '0px' }" shadow="hover">
-    <el-image :src="game.background_image" fit="contain" />
+    <el-image
+      v-if="game.background_image"
+      :src="game.background_image"
+      fit="contain"
+    />
     <div style="padding: 14px">
       <div class="game-card__title">{{ game.name }}</div>
       <div class="game-card__subtitle">{{ genres }}</div>
@@ -28,6 +32,7 @@ const genres = props.game.genres?.reduce((curr, genre) => {
 <style scoped lang="scss">
 .game-card {
   width: 100%;
+  min-height: 420px;
   cursor: pointer;
 
   &__image {

@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`GameJournal > should mount component 1`] = `
-"<div class=\\"container\\" data-v-06c35f8d=\\"\\">
+"<div class=\\"journal-container\\" data-v-06c35f8d=\\"\\">
   <div class=\\"game-list\\" data-v-ef199a12=\\"\\" data-v-06c35f8d=\\"\\"></div>
 </div>"
 `;

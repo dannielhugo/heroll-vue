@@ -19,6 +19,7 @@ defineProps<{ games: Game[] }>();
   grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
 
   @media (max-width: 768px) {
+    justify-content: center;
     grid-template-columns: 1fr;
   }
 

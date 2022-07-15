@@ -26,4 +26,27 @@ describe('AlertMessage', () => {
 
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  test('should mount component and not show', async () => {
+    expect(AlertMessage).toBeTruthy();
+
+    const wrapper = mount(AlertMessage, {
+      global: {
+        plugins: [
+          ElementPlus,
+          createTestingPinia({
+            initialState: {
+              message: {
+                message: 'An error',
+                type: 'error',
+                show: false,
+              },
+            },
+          }),
+        ],
+      },
+    });
+
+    expect(wrapper.html()).toMatchSnapshot();
+  });
 });

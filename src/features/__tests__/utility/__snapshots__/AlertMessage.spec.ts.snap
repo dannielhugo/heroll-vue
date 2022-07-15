@@ -12,3 +12,5 @@ exports[`AlertMessage > should mount component 1`] = `
   </div>
 </transition-stub>"
 `;
+
+exports[`AlertMessage > should mount component and not show 1`] = `"<!--v-if-->"`;

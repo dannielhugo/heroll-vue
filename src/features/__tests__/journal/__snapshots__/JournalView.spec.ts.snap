@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`JournalView > should mount component 1`] = `
-"<div class=\\"container el-loading-parent--relative\\" data-v-06c35f8d=\\"\\" loading-number=\\"1\\">
+"<div class=\\"journal-container el-loading-parent--relative\\" data-v-06c35f8d=\\"\\" data-v-d8aeafea=\\"\\" loading-number=\\"1\\">
   <div class=\\"game-list\\" data-v-ef199a12=\\"\\" data-v-06c35f8d=\\"\\"></div>
   <transition-stub>
     <div class=\\"el-loading-mask\\" style=\\"display: none;\\">
@@ -12,5 +12,17 @@ exports[`JournalView > should mount component 1`] = `
       </div>
     </div>
   </transition-stub>
+</div>
+<div role=\\"pagination\\" aria-label=\\"pagination\\" class=\\"el-pagination journal-view__pagination\\" data-v-d8aeafea=\\"\\"><button type=\\"button\\" class=\\"btn-prev is-first\\" disabled=\\"\\" aria-disabled=\\"true\\"><i class=\\"el-icon\\"><svg viewBox=\\"0 0 1024 1024\\" xmlns=\\"http://www.w3.org/2000/svg\\">
+        <path fill=\\"currentColor\\" d=\\"M609.408 149.376 277.76 489.6a32 32 0 0 0 0 44.672l331.648 340.352a29.12 29.12 0 0 0 41.728 0 30.592 30.592 0 0 0 0-42.752L339.264 511.936l311.872-319.872a30.592 30.592 0 0 0 0-42.688 29.12 29.12 0 0 0-41.728 0z\\"></path>
+      </svg></i></button>
+  <ul class=\\"el-pager\\">
+    <li class=\\"is-active is-disabled number\\" aria-current=\\"true\\" tabindex=\\"-1\\"> 1 </li>
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </ul><button type=\\"button\\" class=\\"btn-next\\" disabled=\\"\\" aria-disabled=\\"true\\"><i class=\\"el-icon\\"><svg viewBox=\\"0 0 1024 1024\\" xmlns=\\"http://www.w3.org/2000/svg\\">
+        <path fill=\\"currentColor\\" d=\\"M340.864 149.312a30.592 30.592 0 0 0 0 42.752L652.736 512 340.864 831.872a30.592 30.592 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z\\"></path>
+      </svg></i></button><span class=\\"el-pagination__jump is-last\\" disabled=\\"true\\">Go to <div class=\\"el-input el-input--small is-disabled el-pagination__editor is-in-pagination\\"><!-- input --><!-- prepend slot --><!--v-if--><div class=\\"el-input__wrapper\\"><!-- prefix slot --><!--v-if--><input class=\\"el-input__inner\\" min=\\"1\\" max=\\"1\\" type=\\"number\\" disabled=\\"\\" autocomplete=\\"off\\" tabindex=\\"0\\"><!-- suffix slot --><!--v-if--></div><!-- append slot --><!--v-if--></div> </span>
 </div>"
 `;
