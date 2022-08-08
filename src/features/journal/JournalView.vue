@@ -1,4 +1,7 @@
 <template>
+  <div class="journal-view__search">
+    <HSearchInput @selected="onAdd" />
+  </div>
   <GameJournal :loading="loading" :games="gamesInPage" />
   <HPagination
     class="journal-view__pagination"
@@ -12,10 +15,14 @@
 
 <script setup lang="ts">
 import GameJournal from '@/components/journal/GameJournal.vue';
+import HSearchInput from '@/components/search/HSearchInput.vue';
 import HPagination from '@/components/utility/HPagination.vue';
+import useGameAdd from '@/composables/journal/use-game-add.js';
 import useGameList from '@/composables/journal/use-game-list';
 import useGameListPagination from '@/composables/journal/use-game-list-pagination';
+
 const { loading, games } = useGameList();
+const { onAdd } = useGameAdd();
 const { gamesInPage, page, total, perPage } = useGameListPagination(games);
 
 const onPageChanged = (newPage: number) => {
@@ -28,6 +35,12 @@ const onPageChanged = (newPage: number) => {
   &__pagination {
     justify-content: center;
     margin-top: 1rem;
+  }
+
+  &__search {
+    margin-bottom: 2rem;
+    align-self: center;
+    width: 33%;
   }
 }
 </style>

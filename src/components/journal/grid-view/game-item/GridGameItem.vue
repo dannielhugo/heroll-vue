@@ -14,19 +14,12 @@
 </template>
 
 <script setup lang="ts">
+import { useGameGenrePlatform } from '@/composables/game/use-game-genre-platform.js';
 import type { Game } from '@/models/game';
 
 const props = defineProps<{ game: Game }>();
 
-const platforms = props.game.platforms?.reduce((curr, game) => {
-  if (curr === '') return game.platform.name;
-  return `${curr}, ${game.platform.name}`;
-}, '');
-
-const genres = props.game.genres?.reduce((curr, genre) => {
-  if (curr === '') return genre.name;
-  return `${curr}, ${genre.name}`;
-}, '');
+const { genres, platforms } = useGameGenrePlatform(props.game);
 </script>
 
 <style scoped lang="scss">
