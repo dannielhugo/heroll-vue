@@ -39,8 +39,12 @@ const onPageChanged = (newPage: number) => {
 
   &__search {
     margin-bottom: 2rem;
-    align-self: center;
+    align-self: left;
     width: 33%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 }
 </style>

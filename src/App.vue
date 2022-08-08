@@ -12,9 +12,14 @@
 import { ref } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
 import AlertMessage from '@/features/utility/AlertMessage.vue';
+import router from './router/index.js';
 const route = useRoute();
 
 const title = ref(route.meta.title || '');
+
+router.beforeEach((to) => {
+  title.value = to.meta.title;
+});
 </script>
 
 <style lang="scss">
