@@ -15,10 +15,10 @@ import AlertMessage from '@/features/utility/AlertMessage.vue';
 import router from './router/index.js';
 const route = useRoute();
 
-const title = ref(route.meta.title || '');
+const title = ref<string>((route.meta.title as string) || '');
 
 router.beforeEach((to) => {
-  title.value = to.meta.title;
+  title.value = to.meta.title as string;
 });
 </script>
 
@@ -27,7 +27,6 @@ router.beforeEach((to) => {
 .app-container {
   position: relative;
   height: 100%;
-  background-color: var(--el-bg-color-page);
 
   &__message {
     position: absolute;
