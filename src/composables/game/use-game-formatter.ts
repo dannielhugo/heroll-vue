@@ -1,6 +1,7 @@
 import type { Game } from '@/models/game';
+import moment from 'moment';
 
-export function useGameGenrePlatform(game: Game) {
+export function useGameFormatter(game: Game) {
   const platforms = game.platforms?.reduce((curr, game) => {
     if (curr === '') return game.platform.name;
     return `${curr}, ${game.platform.name}`;
@@ -11,8 +12,18 @@ export function useGameGenrePlatform(game: Game) {
     return `${curr}, ${genre.name}`;
   }, '');
 
+  const publishers =
+    game.publishers?.reduce((curr, publisher) => {
+      if (curr === '') return publisher.name;
+      return `${curr}, ${publisher.name}`;
+    }, '') || 'NA';
+
+  const released = moment(game.released, 'YYYY-MM-DD').format('MMM DD, YYYY');
+
   return {
     genres,
     platforms,
+    publishers,
+    released,
   };
 }

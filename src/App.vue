@@ -12,7 +12,7 @@
 import { ref } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
 import AlertMessage from '@/features/utility/AlertMessage.vue';
-import router from './router/index.js';
+import router from './router/index';
 const route = useRoute();
 
 const title = ref<string>((route.meta.title as string) || '');

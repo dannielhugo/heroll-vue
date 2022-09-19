@@ -11,13 +11,15 @@
     :current-page="page"
     @page-changed="onPageChanged"
   />
+
+  <RouterView />
 </template>
 
 <script setup lang="ts">
 import GameJournal from '@/components/journal/GameJournal.vue';
 import HSearchInput from '@/components/search/HSearchInput.vue';
 import HPagination from '@/components/utility/HPagination.vue';
-import useGameAdd from '@/composables/journal/use-game-add.js';
+import useGameAdd from '@/composables/journal/use-game-add';
 import useGameList from '@/composables/journal/use-game-list';
 import useGameListPagination from '@/composables/journal/use-game-list-pagination';
 

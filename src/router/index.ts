@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import JournalView from '@/features/journal/JournalView.vue';
+import JournalDetailView from '@/features/journal/JournalDetailView.vue';
 import HomeView from '@/views/HomeView.vue';
 
 const router = createRouter({
@@ -21,6 +22,14 @@ const router = createRouter({
           name: 'journal',
           component: JournalView,
           meta: { title: 'Journal' },
+          children: [
+            {
+              path: ':id',
+              name: 'detail',
+              component: JournalDetailView,
+              meta: { title: 'Journal' },
+            },
+          ],
         },
       ],
     },
@@ -28,7 +37,7 @@ const router = createRouter({
       path: '/signup',
       name: 'signup',
       // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
+      // this generates a separate chunk (About.[hash].ts) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('@/features/signup/SignUpView.vue'),
     },

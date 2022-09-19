@@ -19,8 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import useGameSearch from '@/composables/search/use-game-search.js';
-import type { Game } from '@/models/game.js';
+import useGameSearch from '@/composables/search/use-game-search';
+import type { Game } from '@/models/game';
 
 import { ref } from 'vue';
 

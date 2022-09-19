@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import { useGameGenrePlatform } from '@/composables/game/use-game-genre-platform.js';
-import type { Game } from '@/models/game.js';
+import { useGameFormatter } from '@/composables/game/use-game-formatter';
+import type { Game } from '@/models/game';
 const props = defineProps<{ game: Game }>();
 
-const { genres, platforms } = useGameGenrePlatform(props.game);
+const { genres, platforms } = useGameFormatter(props.game);
 </script>
 
 <style scoped lang="scss">
