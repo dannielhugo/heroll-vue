@@ -1,5 +1,11 @@
 <template>
-  <GameDetail v-if="game" :game="game" :loading="loading" @close="onClose()" />
+  <GameDetail
+    v-if="game"
+    :game="game"
+    :loading="loading"
+    :screenshots="screenshots"
+    @close="onClose()"
+  />
 </template>
 
 <script setup lang="ts">
@@ -10,13 +16,16 @@ import useGameDetail from '@/composables/journal/use-game-detail';
 
 const route = useRoute();
 const router = useRouter();
-const { loading, game, load } = useGameDetail();
+const { loading, game, load, loadScreenshots, screenshots, clear } =
+  useGameDetail();
 
 onMounted(() => {
   load(route.params.id as string);
+  loadScreenshots(route.params.id as string);
 });
 
 const onClose = () => {
+  clear();
   router.push({
     name: 'journal',
   });

@@ -11,9 +11,6 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       redirect: () => {
-        // the function receives the target route as the argument
-        // a relative location doesn't start with `/`
-        // or { path: 'profile'}
         return 'journal';
       },
       children: [
@@ -36,9 +33,6 @@ const router = createRouter({
     {
       path: '/signup',
       name: 'signup',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].ts) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('@/features/signup/SignUpView.vue'),
     },
   ],

@@ -13,35 +13,42 @@
         <el-skeleton v-else :rows="0" animated />
       </template>
 
-      <div class="detail__info__row">
-        <GameDetailInfo
-          title="Released"
-          :value="released"
-          class="detail__info__row__component"
-        />
-        <GameDetailInfo
-          title="Publishers"
-          :value="publishers"
-          class="detail__info__row__component"
-        />
+      <div class="detail__info">
+        <div class="detail__info__left">
+          <div class="detail__info__left__row">
+            <GameDetailInfo
+              title="Released"
+              :value="released"
+              class="detail__info__left__row__component"
+            />
+            <GameDetailInfo
+              title="Publishers"
+              :value="publishers"
+              class="detail__info__left__row__component"
+            />
+          </div>
+
+          <div class="detail__info__left__row">
+            <GameDetailInfo
+              title="Genres"
+              :value="genres"
+              class="detail__info__left__row__component"
+            />
+            <GameDetailInfo
+              title="Platforms"
+              :value="platforms"
+              class="detail__info__left__row__component"
+            />
+          </div>
+
+          <span v-if="!loading">{{ game.description_raw }}</span>
+          <el-skeleton v-else :rows="5" animated />
+        </div>
+
+        <div class="detail__info__right">
+          <GameDetailGallery :src="src" :src-list="srcList" />
+        </div>
       </div>
-
-      <div class="detail__info__row">
-        <GameDetailInfo
-          title="Genres"
-          :value="genres"
-          class="detail__info__row__component"
-        />
-        <GameDetailInfo
-          title="Platforms"
-          :value="platforms"
-          class="detail__info__row__component"
-        />
-      </div>
-
-      <span v-if="!loading">{{ game.description_raw }}</span>
-      <el-skeleton v-else :rows="5" animated />
-
       <template #footer>
         <div class="detail__footer" v-if="!loading">
           <el-button @click="close()">Cancel</el-button>
@@ -61,19 +68,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, toRefs } from 'vue';
 import { useGameFormatter } from '@/composables/game/use-game-formatter';
 import GameDetailInfo from './game-detail-info/GameDetailInfo.vue';
-import type { Game } from '@/models/game';
+import type { Game, ShortScreenshot } from '@/models/game';
 
 const dialogVisible = ref(true);
 
-const props = defineProps<{ game: Game; loading: boolean }>();
+const props = defineProps<{
+  game: Game;
+  screenshots: ShortScreenshot[];
+  loading: boolean;
+}>();
 const emit = defineEmits(['close']);
 
+const { game, screenshots } = toRefs(props);
+
 const { genres, platforms, released, publishers } = useGameFormatter(
-  props.game
+  game.value,
 );
+
+const src = game.value.background_image || '';
+const srcList = screenshots.value
+  ? [game.value.background_image, ...screenshots.value.map((img) => img.image)]
+  : [game.value.background_image];
 
 const close = () => {
   dialogVisible.value = false;
@@ -110,13 +128,24 @@ const handleClose = (done: () => void) => {
   }
 
   &__info {
-    &__row {
-      display: flex;
-      flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-      &__component {
-        width: 50%;
+    &__left {
+      width: 50%;
+      &__row {
+        display: flex;
+        flex-direction: row;
+
+        &__component {
+          width: 50%;
+        }
       }
+    }
+
+    &__right {
+      width: 50%;
+      padding: 20px;
     }
   }
 

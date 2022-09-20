@@ -1,4 +1,4 @@
-import type { Game } from '@/models/game';
+import type { Game, ShortScreenshot } from '@/models/game';
 import type { RawgSearchResponse } from '@/models/rawg';
 import { DateTime } from 'luxon';
 import { RawgService } from './rawg.service';
@@ -25,5 +25,12 @@ export class GameService {
     const response = await RawgService.get(URL);
 
     return response.data;
+  }
+
+  async screenshots(gameId: number | string): Promise<ShortScreenshot[]> {
+    const URL = `${GAMES_PATH}/${gameId}/screenshots`;
+    const response = await RawgService.get(URL);
+
+    return response.data.results;
   }
 }

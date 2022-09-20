@@ -3,9 +3,18 @@ import { storeToRefs } from 'pinia';
 
 export default function useGameDetail() {
   const gameStore = useGameStore();
-  const { loading, game } = storeToRefs(gameStore);
+  const { loading, game, loadingScreenshots, screenshots } =
+    storeToRefs(gameStore);
 
-  const { load } = gameStore;
+  const { load, loadScreenshots, clear } = gameStore;
 
-  return { load, loading, game };
+  return {
+    load,
+    loading,
+    game,
+    loadScreenshots,
+    loadingScreenshots,
+    screenshots,
+    clear,
+  };
 }
