@@ -1,5 +1,6 @@
 import { useSearchStore } from '@/stores/search';
 import { storeToRefs } from 'pinia';
+import { ref } from 'vue';
 
 export default function useGameSearch() {
   const query = ref('');

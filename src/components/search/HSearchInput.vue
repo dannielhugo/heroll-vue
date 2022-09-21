@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 import useGameSearch from '@/composables/search/use-game-search';
+import HSearchInputTemplate from './search-input/HSearchInputTemplate.vue';
 import type { Game } from '@/models/game';
 
 import { ref } from 'vue';
@@ -35,7 +36,7 @@ withDefaults(
   }>(),
   {
     placeholder: 'Find a game',
-  },
+  }
 );
 
 const querySearch = (q: string, cb: (r: Game[]) => void) => {
