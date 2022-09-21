@@ -1,6 +1,5 @@
 <template>
   <GameDetail
-    v-if="game"
     :game="game"
     :loading="loading"
     :screenshots="screenshots"

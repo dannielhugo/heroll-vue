@@ -5,7 +5,7 @@ import { defineStore } from 'pinia';
 export interface GameState {
   loading: boolean;
   loadingScreenshots: boolean;
-  game?: Game;
+  game: Game | null;
   screenshots: ShortScreenshot[];
 }
 
@@ -13,7 +13,7 @@ export const useGameStore = defineStore({
   id: 'game',
   state: () =>
     ({
-      game: undefined,
+      game: null as Game | null,
       loading: false,
       loadingScreenshots: false,
       screenshots: [],
@@ -32,7 +32,7 @@ export const useGameStore = defineStore({
       this.screenshots = response;
     },
     clear() {
-      this.game = undefined;
+      this.game = null as Game | null;
       this.loading = false;
       this.loadingScreenshots = false;
       this.screenshots = [];

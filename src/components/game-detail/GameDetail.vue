@@ -1,19 +1,14 @@
 <template>
   <div class="detail">
-    <el-dialog
-      v-model="dialogVisible"
-      :title="game.name"
-      :before-close="handleClose"
-      width="90%"
-    >
+    <el-dialog v-model="dialogVisible" :before-close="handleClose" width="90%">
       <template #header="{ titleId }">
         <div class="detail__header" v-if="!loading">
-          <h1 :id="titleId">{{ game.name }}</h1>
+          <h1 :id="titleId">{{ game?.name }}</h1>
         </div>
         <el-skeleton v-else :rows="0" animated />
       </template>
 
-      <div class="detail__info">
+      <div class="detail__info" v-if="!loading">
         <div class="detail__info__left">
           <div class="detail__info__left__row">
             <GameDetailInfo
@@ -41,14 +36,14 @@
             />
           </div>
 
-          <span v-if="!loading">{{ game.description_raw }}</span>
-          <el-skeleton v-else :rows="5" animated />
+          <span>{{ game?.description_raw }}</span>
         </div>
-
-        <div class="detail__info__right">
+        <div class="detail__info__right" v-if="game">
           <GameDetailGallery :src="src" :src-list="srcList" />
         </div>
       </div>
+      <el-skeleton v-else :rows="5" animated />
+
       <template #footer>
         <div class="detail__footer" v-if="!loading">
           <el-button @click="close()">Cancel</el-button>
@@ -68,30 +63,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs } from 'vue';
+import { ref, toRefs, watchEffect } from 'vue';
 import { useGameFormatter } from '@/composables/game/use-game-formatter';
 import GameDetailInfo from './game-detail-info/GameDetailInfo.vue';
 import type { Game, ShortScreenshot } from '@/models/game';
 
 const dialogVisible = ref(true);
+const src = ref('');
+const srcList = ref<string[]>([]);
 
 const props = defineProps<{
-  game: Game;
+  game: Game | null;
   screenshots: ShortScreenshot[];
   loading: boolean;
 }>();
 const emit = defineEmits(['close']);
 
 const { game, screenshots } = toRefs(props);
-
-const { genres, platforms, released, publishers } = useGameFormatter(
-  game.value,
-);
-
-const src = game.value.background_image || '';
-const srcList = screenshots.value
-  ? [game.value.background_image, ...screenshots.value.map((img) => img.image)]
-  : [game.value.background_image];
 
 const close = () => {
   dialogVisible.value = false;
@@ -103,6 +91,22 @@ const handleClose = (done: () => void) => {
   emit('close');
   done();
 };
+
+const { genres, platforms, released, publishers } = useGameFormatter(
+  game.value,
+);
+
+watchEffect(() => {
+  if (!game || !game.value) return;
+
+  src.value = game.value.background_image || '';
+  srcList.value = screenshots.value
+    ? [
+        game.value.background_image || '',
+        ...screenshots.value.map((img) => img.image),
+      ]
+    : [game.value.background_image || ''];
+});
 </script>
 
 <style lang="scss" scoped>

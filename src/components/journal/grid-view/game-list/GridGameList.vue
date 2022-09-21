@@ -1,7 +1,7 @@
 <template>
   <div class="game-list">
     <div class="game-list__cols" v-for="game in games" :key="game.id">
-      <GridGameItem :game="game" />
+      <GridGameItem :game="game" @click="gameClick(game)" />
     </div>
   </div>
 </template>
@@ -10,6 +10,11 @@
 import type { Game } from '@/models/game';
 import GridGameItem from '../game-item/GridGameItem.vue';
 defineProps<{ games: Game[] }>();
+const emit = defineEmits(['detail']);
+
+const gameClick = (game: Game) => {
+  emit('detail', game);
+};
 </script>
 
 <style lang="scss" scoped>
