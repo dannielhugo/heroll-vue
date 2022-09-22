@@ -3,8 +3,6 @@ import { mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import ElementPlus from 'element-plus';
 
-vi.mock('@/services/factory.service');
-
 vi.mock('@/composables/journal/use-game-list', () => ({
   default: vi.fn().mockReturnValue({ loading: true, games: ref([]) }),
 }));
