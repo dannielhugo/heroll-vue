@@ -14,7 +14,7 @@
     "lint:build": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.6",
+    "@element-plus/icons-vue": "^2.0.9",
     "axios": "^0.27.2",
     "element-plus": "^2.2.6",
     "firebase": "^9.8.4",

@@ -36,13 +36,30 @@
             />
           </div>
 
-          <span>{{ game?.description_raw }}</span>
+          <GameDetailInfo
+            v-if="game?.description_raw"
+            :value="game.description_raw"
+            title="About"
+          />
+          <span>{{}}</span>
         </div>
         <div class="detail__info__right" v-if="game">
           <GameDetailGallery :src="src" :src-list="srcList" />
         </div>
       </div>
       <el-skeleton v-else :rows="5" animated />
+
+      <GameDetailInfo
+        v-if="!loadingRating"
+        title="Rating"
+        class="detail__info__left__row__component"
+      >
+        <template #title-complement>
+          <GameDetailRating trigger-button-size="small" />
+        </template>
+        <HRating :disabled="true" :default-value="ratingValue" />
+      </GameDetailInfo>
+      <el-skeleton v-else :rows="0" animated />
 
       <template #footer>
         <div class="detail__footer" v-if="!loading">
@@ -63,11 +80,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs, watchEffect } from 'vue';
+import { ref, toRefs, watchEffect, watch } from 'vue';
+import type { Game, ShortScreenshot, UserRating } from '@/models/game';
 import { useGameFormatter } from '@/composables/game/use-game-formatter';
 import GameDetailInfo from './game-detail-info/GameDetailInfo.vue';
-import type { Game, ShortScreenshot } from '@/models/game';
+import GameDetailRating from './game-detail-rating/GameDetailRating.vue';
+import HRating from '@/components/utility/HRating.vue';
 
+const RATING_KEYS = 5;
 const dialogVisible = ref(true);
 const src = ref('');
 const srcList = ref<string[]>([]);
@@ -76,6 +96,8 @@ const props = defineProps<{
   game: Game | null;
   screenshots: ShortScreenshot[];
   loading: boolean;
+  loadingRating: boolean;
+  rating: UserRating | Record<string, never>;
 }>();
 const emit = defineEmits(['close']);
 
@@ -95,6 +117,7 @@ const handleClose = (done: () => void) => {
 const { genres, platforms, released, publishers } = useGameFormatter(
   game.value,
 );
+const ratingValue = ref(0);
 
 watchEffect(() => {
   if (!game || !game.value) return;
@@ -106,6 +129,14 @@ watchEffect(() => {
         ...screenshots.value.map((img) => img.image),
       ]
     : [game.value.background_image || ''];
+});
+
+watchEffect(() => {
+  if (!props.rating) return;
+  const keys = Object.keys(props.rating).length || RATING_KEYS;
+
+  ratingValue.value =
+    Object.values(props.rating).reduce((acc, value) => acc + value, 0) / keys;
 });
 </script>
 

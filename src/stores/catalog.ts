@@ -16,8 +16,20 @@ export const useCatalogStore = defineStore({
       loading: false,
     } as CatalogState),
   getters: {
-    games(): Game[] {
-      return this.catalog?.games || [];
+    games(state): Game[] {
+      return state.catalog.games || [];
+    },
+
+    getGameBySlug: (state) => {
+      return (slug: string) => {
+        console.log(state.catalog.games);
+
+        return (
+          state.catalog.games?.find((game: Game) => {
+            return `${game.slug}` === `${slug}`;
+          }) || null
+        );
+      }
     },
   },
   actions: {
