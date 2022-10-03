@@ -1,18 +1,13 @@
 <template>
-  <el-popover
-    placement="right"
-    :width="250"
-    trigger="click"
-    v-model:visible="visible"
-  >
+  <el-popover placement="right" :width="250" trigger="click" :visible="visible">
     <template #reference>
       <div class="game-detail-rating__trigger">
         <el-button
+          circle
           type="primary"
           :size="triggerButtonSize"
           :icon="Edit"
           @click="setVisible(true)"
-          circle
         />
       </div>
     </template>
@@ -56,15 +51,15 @@ withDefaults(
   defineProps<{
     rating?: number;
     triggerButtonSize: 'large' | 'default' | 'small';
+    visible?: boolean;
   }>(),
   {
     triggerButtonSize: 'small',
+    visible: false,
   },
 );
 
-const emit = defineEmits(['save']);
-
-const visible = ref(false);
+const emit = defineEmits(['save', 'open', 'close']);
 const ratingMap = new Map();
 const graphics = ref<number>(0);
 const sound = ref<number>(0);
@@ -86,7 +81,7 @@ const onChange = (value: number, reference: string) => {
 };
 
 const setVisible = (value: boolean) => {
-  visible.value = value;
+  value ? emit('open') : emit('close');
 };
 
 const onSave = () => {
@@ -97,6 +92,7 @@ const onSave = () => {
     characters: characters.value,
     gameplay: gameplay.value,
   });
+  emit('close');
 };
 
 watchEffect(() => {

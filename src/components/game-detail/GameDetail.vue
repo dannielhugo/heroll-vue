@@ -41,7 +41,6 @@
             :value="game.description_raw"
             title="About"
           />
-          <span>{{}}</span>
         </div>
         <div class="detail__info__right" v-if="game">
           <GameDetailGallery :src="src" :src-list="srcList" />
@@ -55,7 +54,12 @@
         class="detail__info__left__row__component"
       >
         <template #title-complement>
-          <GameDetailRating trigger-button-size="small" />
+          <GameDetailRating
+            trigger-button-size="small"
+            :visible="ratingVisible"
+            @open="handleRatePopover(true)"
+            @close="handleRatePopover(false)"
+          />
         </template>
         <HRating :disabled="true" :default-value="ratingValue" />
       </GameDetailInfo>
@@ -80,17 +84,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs, watchEffect, watch } from 'vue';
-import type { Game, ShortScreenshot, UserRating } from '@/models/game';
-import { useGameFormatter } from '@/composables/game/use-game-formatter';
+import { ref } from 'vue';
 import GameDetailInfo from './game-detail-info/GameDetailInfo.vue';
 import GameDetailRating from './game-detail-rating/GameDetailRating.vue';
 import HRating from '@/components/utility/HRating.vue';
-
-const RATING_KEYS = 5;
-const dialogVisible = ref(true);
-const src = ref('');
-const srcList = ref<string[]>([]);
+import useDetail from '@/composables/game-detail/use-detail';
+import type { Game, ShortScreenshot, UserRating } from '@/models/game';
 
 const props = defineProps<{
   game: Game | null;
@@ -99,45 +98,38 @@ const props = defineProps<{
   loadingRating: boolean;
   rating: UserRating | Record<string, never>;
 }>();
+
+const ratingVisible = ref<boolean>(false);
+
 const emit = defineEmits(['close']);
 
-const { game, screenshots } = toRefs(props);
+const {
+  ratingValue,
+  dialogVisible,
+  genres,
+  platforms,
+  released,
+  publishers,
+  src,
+  srcList,
+} = useDetail(props);
 
 const close = () => {
   dialogVisible.value = false;
+  ratingVisible.value = false;
   emit('close');
 };
 
 const handleClose = (done: () => void) => {
   dialogVisible.value = false;
+  ratingVisible.value = false;
   emit('close');
   done();
 };
 
-const { genres, platforms, released, publishers } = useGameFormatter(
-  game.value,
-);
-const ratingValue = ref(0);
-
-watchEffect(() => {
-  if (!game || !game.value) return;
-
-  src.value = game.value.background_image || '';
-  srcList.value = screenshots.value
-    ? [
-        game.value.background_image || '',
-        ...screenshots.value.map((img) => img.image),
-      ]
-    : [game.value.background_image || ''];
-});
-
-watchEffect(() => {
-  if (!props.rating) return;
-  const keys = Object.keys(props.rating).length || RATING_KEYS;
-
-  ratingValue.value =
-    Object.values(props.rating).reduce((acc, value) => acc + value, 0) / keys;
-});
+const handleRatePopover = (opened: boolean) => {
+  ratingVisible.value = opened;
+};
 </script>
 
 <style lang="scss" scoped>

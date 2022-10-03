@@ -22,8 +22,6 @@ export const useCatalogStore = defineStore({
 
     getGameBySlug: (state) => {
       return (slug: string) => {
-        console.log(state.catalog.games);
-
         return (
           state.catalog.games?.find((game: Game) => {
             return `${game.slug}` === `${slug}`;
