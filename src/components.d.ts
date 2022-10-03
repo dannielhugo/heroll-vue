@@ -23,7 +23,7 @@ declare module '@vue/runtime-core' {
     ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
     GameDetail: typeof import('./components/game-detail/GameDetail.vue')['default']
     GameDetailGallery: typeof import('./components/game-detail/game-detail-gallery/GameDetailGallery.vue')['default']
-    GameDetailGeneralInfo: typeof import('./components/game-detail/game-detail-general-info/game-detail-general-info.vue')['default']
+    GameDetailGeneralInfo: typeof import('./components/game-detail/game-detail-general-info/GameDetailGeneralInfo.vue')['default']
     GameDetailInfo: typeof import('./components/game-detail/game-detail-info/GameDetailInfo.vue')['default']
     GameDetailRating: typeof import('./components/game-detail/game-detail-rating/GameDetailRating.vue')['default']
     GameJournal: typeof import('./components/journal/GameJournal.vue')['default']

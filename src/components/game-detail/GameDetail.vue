@@ -8,50 +8,24 @@
         <el-skeleton v-else :rows="0" animated />
       </template>
 
-      <div class="detail__info" v-if="!loading">
-        <div class="detail__info__left">
-          <div class="detail__info__left__row">
-            <GameDetailInfo
-              title="Released"
-              :value="released"
-              class="detail__info__left__row__component"
-            />
-            <GameDetailInfo
-              title="Publishers"
-              :value="publishers"
-              class="detail__info__left__row__component"
-            />
-          </div>
+      <div class="detail__info">
+        <div class="detail__info__left" v-if="game">
+          <GameDetailGeneralInfo :game="game" :loading="loading" />
+        </div>
 
-          <div class="detail__info__left__row">
-            <GameDetailInfo
-              title="Genres"
-              :value="genres"
-              class="detail__info__left__row__component"
-            />
-            <GameDetailInfo
-              title="Platforms"
-              :value="platforms"
-              class="detail__info__left__row__component"
-            />
-          </div>
-
-          <GameDetailInfo
-            v-if="game?.description_raw"
-            :value="game.description_raw"
-            title="About"
+        <div class="detail__info__right" v-if="game">
+          <GameDetailGallery
+            :src="src"
+            :src-list="srcList"
+            :loading="loading"
           />
         </div>
-        <div class="detail__info__right" v-if="game">
-          <GameDetailGallery :src="src" :src-list="srcList" />
-        </div>
       </div>
-      <el-skeleton v-else :rows="5" animated />
 
       <GameDetailInfo
         v-if="!loadingRating"
         title="Rating"
-        class="detail__info__left__row__component"
+        class="detail__info__rating"
       >
         <template #title-complement>
           <GameDetailRating
@@ -103,16 +77,7 @@ const ratingVisible = ref<boolean>(false);
 
 const emit = defineEmits(['close']);
 
-const {
-  ratingValue,
-  dialogVisible,
-  genres,
-  platforms,
-  released,
-  publishers,
-  src,
-  srcList,
-} = useDetail(props);
+const { ratingValue, dialogVisible, src, srcList } = useDetail(props);
 
 const close = () => {
   dialogVisible.value = false;
@@ -160,14 +125,6 @@ const handleRatePopover = (opened: boolean) => {
 
     &__left {
       width: 50%;
-      &__row {
-        display: flex;
-        flex-direction: row;
-
-        &__component {
-          width: 50%;
-        }
-      }
     }
 
     &__right {

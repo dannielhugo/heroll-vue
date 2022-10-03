@@ -18,25 +18,6 @@ export default function useDetail(props: DetailProps) {
   const src = ref('');
   const srcList = ref<string[]>([]);
 
-  const genres = ref<string>();
-  const platforms = ref<string>();
-  const released = ref<string>();
-  const publishers = ref<string>();
-
-  watchEffect(() => {
-    const {
-      genres: g,
-      platforms: p,
-      released: r,
-      publishers: pub,
-    } = useGameFormatter(game.value);
-
-    genres.value = g;
-    platforms.value = p;
-    released.value = r;
-    publishers.value = pub;
-  });
-
   watchEffect(() => {
     if (!game || !game.value) return;
 
@@ -60,10 +41,6 @@ export default function useDetail(props: DetailProps) {
   return {
     ratingValue,
     dialogVisible,
-    genres,
-    platforms,
-    released,
-    publishers,
     src,
     srcList,
   };
