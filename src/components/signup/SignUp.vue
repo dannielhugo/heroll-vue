@@ -48,6 +48,7 @@ defineProps(['loading']);
   align-items: center;
   justify-content: center;
   height: 80vh;
+  margin: 0 auto;
 
   &__bg {
     position: relative;

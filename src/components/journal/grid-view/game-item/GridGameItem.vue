@@ -1,5 +1,10 @@
 <template>
-  <el-card class="game-card" :body-style="{ padding: '0px' }" shadow="hover">
+  <el-card
+    class="game-card"
+    :body-style="{ padding: '0px' }"
+    shadow="hover"
+    @click="onClick()"
+  >
     <el-image
       v-if="game.background_image"
       :src="game.background_image"
@@ -14,19 +19,17 @@
 </template>
 
 <script setup lang="ts">
+import { useGameFormatter } from '@/composables/game/use-game-formatter';
 import type { Game } from '@/models/game';
 
 const props = defineProps<{ game: Game }>();
+const emit = defineEmits(['click']);
 
-const platforms = props.game.platforms?.reduce((curr, game) => {
-  if (curr === '') return game.platform.name;
-  return `${curr}, ${game.platform.name}`;
-}, '');
+const { genres, platforms } = useGameFormatter(props.game);
 
-const genres = props.game.genres?.reduce((curr, genre) => {
-  if (curr === '') return genre.name;
-  return `${curr}, ${genre.name}`;
-}, '');
+const onClick = () => {
+  emit('click');
+};
 </script>
 
 <style scoped lang="scss">

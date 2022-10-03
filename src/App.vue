@@ -12,9 +12,14 @@
 import { ref } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
 import AlertMessage from '@/features/utility/AlertMessage.vue';
+import router from './router/index';
 const route = useRoute();
 
-const title = ref(route.meta.title || '');
+const title = ref<string>((route.meta.title as string) || '');
+
+router.beforeEach((to) => {
+  title.value = to.meta.title as string;
+});
 </script>
 
 <style lang="scss">
@@ -22,7 +27,6 @@ const title = ref(route.meta.title || '');
 .app-container {
   position: relative;
   height: 100%;
-  background-color: var(--el-bg-color-page);
 
   &__message {
     position: absolute;

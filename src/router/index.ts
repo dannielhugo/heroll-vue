@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import JournalView from '@/features/journal/JournalView.vue';
+import JournalDetailView from '@/features/journal/JournalDetailView.vue';
 import HomeView from '@/views/HomeView.vue';
 
 const router = createRouter({
@@ -10,9 +11,6 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       redirect: () => {
-        // the function receives the target route as the argument
-        // a relative location doesn't start with `/`
-        // or { path: 'profile'}
         return 'journal';
       },
       children: [
@@ -21,15 +19,20 @@ const router = createRouter({
           name: 'journal',
           component: JournalView,
           meta: { title: 'Journal' },
+          children: [
+            {
+              path: ':id',
+              name: 'detail',
+              component: JournalDetailView,
+              meta: { title: 'Journal' },
+            },
+          ],
         },
       ],
     },
     {
       path: '/signup',
       name: 'signup',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('@/features/signup/SignUpView.vue'),
     },
   ],
